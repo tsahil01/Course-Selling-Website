@@ -9,10 +9,10 @@ const pool = new Pool({
 });
 
 // USERS ==>
-async function insertUser(fname, lname, email, password){
+async function insertUser(fname, lname, email, password, role){
   const client = await pool.connect();
   try{
-    const response = await client.query(`INSERT INTO users ("firstname", "lastname", "email", "password") VALUES ('${fname}', '${lname}', '${email}', '${password}');`)
+    const response = await client.query(`INSERT INTO users ("firstname", "lastname", "email", "password", "role") VALUES ('${fname}', '${lname}', '${email}', '${password}', '${role}');`)
     console.log(response.command);
   } catch(e){
     console.log(`Error: ${e}`);
@@ -20,7 +20,7 @@ async function insertUser(fname, lname, email, password){
     client.release();
   }
 }
-// insertUser('admin', 'admin', 'admin@admin.admin', 'admin')
+// insertUser('Alice', 'Johnson', 'alice.johnson@example.com', 'password123', 'learner');
 
 async function getUser(email, password){
   const client = await pool.connect();
@@ -61,7 +61,10 @@ async function updateUserPassword(email, oldPassword, newPassowrd){
       WHERE email = '${email}' 
       AND password = '${oldPassword}';
       `)
-      console.log(response)
+      if(!response.rowCount){
+        throw "Invaid email or password"
+      }
+      console.log(response.command)
 
   } catch(e){
     console.log(`Error: ${e}`);
@@ -69,16 +72,19 @@ async function updateUserPassword(email, oldPassword, newPassowrd){
     client.release();
   } 
 }
-updateUserPassword('admin@admin.admin', 'admin@1234', 'admin');
+// updateUserPassword('admin@admin.admin', 'admin@1234', 'sahil');
 
 async function deleteUser(email, password){
   const client = await pool.connect();
   try {
-    const response = await client.query (`DELETE FROM users
-    WHERE email = '${email}'
-    AND password '${password}';
-    `)
-    console.log(response) 
+      const response = await client.query (`DELETE FROM users
+      WHERE email = '${email}' 
+      AND password = '${password}';
+      `)
+      if(!response.rowCount){
+        throw "Invaid email or password"
+      }
+      console.log(response.command)
 
   } catch(e){
     console.log(`Error: ${e}`);
@@ -86,3 +92,4 @@ async function deleteUser(email, password){
     client.release();
   } 
 }
+// deleteUser('admin@admin.admin', 'sahil')
