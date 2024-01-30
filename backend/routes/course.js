@@ -7,6 +7,26 @@ require('dotenv').config();
 
 const courseRoute = express.Router()
 
+courseRoute.get('/all-course', async(req, res) =>{
+    const client = await pool.connect()
+    try{
+        const response = await client.query(`SELECT * FROM courses;`)
+        console.log(response)
+         if(response.command == "SELECT"){
+             res.json({ courses: response.rows })
+            } else{
+            throw "Some error occured while getting courses"
+         }
+
+    } catch(e){
+        res.status(411).json(`Error: ${e}`);
+    } finally{
+        client.release();
+        return;
+    }
+    
+})
+
 
 const newCourseSchmea = zod.object({
     title: zod.string().min(3),
