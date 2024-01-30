@@ -30,7 +30,7 @@ userRoute.get('/getuser', async(req, res)=>{
         } else{
             const token = jwt.sign(body.email, process.env.JWT_SECRET)
              res.json({
-                user: response.rows[0],
+                user: response.rows[0], // put the user_id in headers
                 token: token})           
         }
       } catch(e){
