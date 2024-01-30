@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const courseRoute = express.Router()
 
-courseRoute.get('/all-course', async(req, res) =>{
+courseRoute.get('/allcourse', async(req, res) =>{
     const client = await pool.connect()
     try{
         const response = await client.query(`SELECT * FROM courses;`)
@@ -33,7 +33,7 @@ const newCourseSchmea = zod.object({
     description: zod.string().min(3),
     price: zod.number()
 })
-courseRoute.post('/new-course',authMiddleware, async (req, res)=>{
+courseRoute.post('/newcourse',authMiddleware, async (req, res)=>{
     const body = req.body;
     const zodSafeParse = newCourseSchmea.safeParse(body)
     if(!zodSafeParse.success){
@@ -66,7 +66,7 @@ const updateCourseSchema = zod.object({
     price: zod.number()
 })
 // Update course details
-courseRoute.put('/update-course', authMiddleware, async (req, res)=>{
+courseRoute.put('/updatecourse', authMiddleware, async (req, res)=>{
     const body = req.body;
     const zodSafeParse = updateCourseSchema.safeParse(body)
     if(!zodSafeParse.success){
@@ -98,7 +98,7 @@ const deleteCourseSchema = zod.object({
     title: zod.string().min(3)
 })
 
-courseRoute.delete('/delete-course', authMiddleware, async (req, res)=>{
+courseRoute.delete('/deletecourse', authMiddleware, async (req, res)=>{
     const body = req.body;
     const zodSafeParse = deleteCourseSchema.safeParse(body)
     if(!zodSafeParse.success){

@@ -30,7 +30,7 @@ purchaseRoute.post('/purchase', authMiddleware, async (req, res)=>{
 })
 
 
-purchaseRoute.get('/get-purchase', authMiddleware, async (req, res)=>{
+purchaseRoute.get('/getpurchase', authMiddleware, async (req, res)=>{
     const user_id = `${(req.headers.user_id)}`;
     const client = await pool.connect()
     try{
