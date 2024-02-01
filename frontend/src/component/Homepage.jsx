@@ -6,3 +6,9 @@ export default function Home(){
 }
 
 
+function HeroSection(){
+    return<>
+    
+    </>
+    
+}

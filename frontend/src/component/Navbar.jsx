@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom"
 
 export default function Navbar(){
-    const userLogin = false;
     const navigate = useNavigate()
+    const userLogin = false;
     return<>
-        <div className="flex justify-between px-6 py-3 bg-slate-900 text-white shadow-2xl">
+        <div className="flex justify-between px-6 py-3 bg-slate-900 text-white shadow-2xl flex-wrap overflow-auto">
             <div className="flex justify-start gap-7">
-                <div className="text-xl p-3 font-black">Course Selling Website</div>
+                <div className="text-xl p-3 font-black hidden md:block">Course Selling Website</div>
                 <div className="flex justify-between">
                 <button className="text-lg px-3 py-2 hover:bg-slate-700 rounded-md focus:outline-none font-semibold" onClick={()=>navigate('/')}>
                     Home</button>
@@ -22,6 +22,7 @@ export default function Navbar(){
 }
 
 function IsLogin(){
+    const navigate = useNavigate()
     return<>
         <button className="text-2xl p-3 m-auto hover:bg-slate-700 rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -35,9 +36,10 @@ function IsLogin(){
 }
 
 function IsNotLogin(){
+    const navigate = useNavigate()
     return<>
         <div className="flex justify-between">
-            <button className="text-lg px-3 py-2 hover:bg-slate-700  bg-slate-800 rounded-md focus:outline-none font-semibold">Login</button>
+            <button className="text-lg px-3 py-2 hover:bg-slate-700  bg-slate-800 rounded-md focus:outline-none font-semibold" onClick={()=> navigate('/signin')}>Login</button>
         </div>
     </>
 }
