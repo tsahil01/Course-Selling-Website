@@ -1,4 +1,4 @@
-import { Carousel } from 'flowbite-react';
+import EachCourse from './EachCourse';
 
 export default function Home(){
     return<>
@@ -30,7 +30,7 @@ const taglines = [
 function Featured(){
 return<>
     <div className='font-bold text-2xl'>Featured</div>
-    <div className="grid md:grid-cols-3 gap-4 sm:gap-2 md:gap-4 sm:p-7 p-4 justify-items-stretch">
+    <div className="grid sm:grid-cols-1 lg:grid-cols-3 gap-1 sm:gap-2 md:gap-4 sm:p-7 p-4 justify-center">
         <EachCourse/>
         <EachCourse/>
         <EachCourse/>
@@ -39,13 +39,3 @@ return<>
 }
 
 
-
-function EachCourse(){
-return <>
-<div className="flex flex-col bg-slate-800 text-white p-4 rounded-xl">
-    <div className="flex justify-center font-extrabold text-2xl">Course Name</div>
-    <div className="flex justify-center">Course Description</div>
-    <div className="flex justify-center pt-5 font-extrabold"><button className="hover:bg-slate-700 rounded-md p-3">See details</button></div>
-</div>
-</>
-}

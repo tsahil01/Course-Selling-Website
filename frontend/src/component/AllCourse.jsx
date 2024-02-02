@@ -1,29 +1,49 @@
-import Navbar from "./Navbar";
+import { useRecoilState } from "recoil";
+import EachCourse from "./EachCourse";
+import { isLogin } from "../store/atoms/isLoginAtom";
 
 export default function Courses(){
-
+    const isLogin = useRecoilState(isLogin)
     return <>
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-1 sm:gap-2 md:gap-4 sm:p-7 p-4 justify-items-stretch">
-            <EachCourse/>
-            <EachCourse/>
-            <EachCourse/>
-            <EachCourse/>
-            <EachCourse/>
-            <EachCourse/>
-            <EachCourse/>
-            
-        </div>
-
+        {isLogin? <YourCourses/>: <></>}
+        <AllCourses/>
         </>
 }
 
+function YourCourses(){
+    return<>
+        <div className='p-10 sm:px-12'>
+            <div className='font-bold text-2xl'>Your Courses</div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-2 md:gap-4 sm:p-7 p-4 justify-items-stretch">
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+            </div>
+        </div>
+    </>
+}
 
-function EachCourse(){
-    return <>
-    <div className="flex flex-col bg-slate-800 text-white p-4  rounded-xl">
-        <div className="flex justify-center font-extrabold text-2xl">Course Name</div>
-        <div className="flex justify-center">Course Description</div>
-        <div className="flex justify-center pt-5 font-extrabold"><button className="hover:bg-slate-700 rounded-md p-3">See details</button></div>
-    </div>
+
+function AllCourses(){
+    return<>
+        <div className='p-10 sm:px-12'>
+            <div className='font-bold text-2xl'>All Courses</div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-2 md:gap-4 sm:p-7 p-4 justify-items-stretch">
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+                <EachCourse/>
+            </div>
+        </div>
     </>
 }
