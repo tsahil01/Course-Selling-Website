@@ -9,13 +9,9 @@ import SignInPage from './component/Signin';
 import SignUpPage from './component/Signup';
 import Course from './component/Course';
 
-function Abc(){
-    return <>
-        <h1>Helloo</h1>
-    </>
-}
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <div className='bg-slate-950 min-h-screen'>
   <BrowserRouter>
   <Navbar />
     <Routes>
@@ -28,5 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/signup" element={<SignUpPage />}/>
     </Routes>
   </BrowserRouter>
+  </div>
 );
 

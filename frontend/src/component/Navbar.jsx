@@ -4,20 +4,23 @@ export default function Navbar(){
     const navigate = useNavigate()
     const userLogin = false;
     return<>
-        <div className="flex justify-between px-6 py-3 bg-slate-900 text-white shadow-2xl flex-wrap overflow-auto">
+        <nav className="py-2 h-16 text-white fixed z-50 top-0 px-4 w-full border-b">
+            <div className="flex justify-between md:mx-auto md:max-w-screen-2xl mx-auto items-center">
             <div className="flex justify-start gap-7">
                 <div className="text-xl p-3 font-black hidden md:block">Course Selling Website</div>
                 <div className="flex justify-between">
-                <button className="text-lg px-3 py-2 hover:bg-slate-700 rounded-md focus:outline-none font-semibold" onClick={()=>navigate('/')}>
+                <button className="text-base px-2 hover:bg-slate-700 rounded-md focus:outline-none" onClick={()=>navigate('/')}>
                     Home</button>
-                <button className="text-lg px-3 py-2 hover:bg-slate-700 rounded-md focus:outline-none font-semibold" onClick={()=>navigate('/courses')}>
+                <button className="text-base px-2 hover:bg-slate-700 rounded-md focus:outline-none" onClick={()=>navigate('/courses')}>
                     Courses</button>
                 </div>
             </div>
             <div className="flex justify-start gap-4">
                 {userLogin? <IsLogin/> : <IsNotLogin/>}
             </div>
-        </div>
+            </div>
+        </nav>
+        <div class="h-16 w-full"></div>
     </>
 }
 
@@ -30,7 +33,7 @@ function IsLogin(){
             </svg>
         </button>
         <div className="flex justify-between">
-            <button className="text-lg px-2 hover:bg-slate-700 bg-slate-800 rounded-md focus:outline-none font-semibold">Logout</button>
+            <button className="text-base px-2 hover:bg-slate-700 bg-slate-800 rounded-md focus:outline-none">Logout</button>
         </div>
     </>
 }
@@ -39,7 +42,7 @@ function IsNotLogin(){
     const navigate = useNavigate()
     return<>
         <div className="flex justify-between">
-            <button className="text-lg px-3 py-2 hover:bg-slate-700  bg-slate-800 rounded-md focus:outline-none font-semibold" onClick={()=> navigate('/signin')}>Login</button>
+            <button className="text-base px-3 py-2 hover:bg-slate-700  bg-slate-800 rounded-md focus:outline-none" onClick={()=> navigate('/signin')}>Login</button>
         </div>
     </>
 }

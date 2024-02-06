@@ -2,30 +2,13 @@ import EachCourse from './EachCourse';
 
 export default function Home(){
     return<>
-    <div className='p-10 sm:px-12'>
-        <div className='font-black md:text-6xl text-4xl text-slate-900 py-5 text-center m-auto sm:mb-9'>
-            {taglines[Math.floor(Math.random() * taglines.length)]}
+    <div className='md:max-w-screen-2xl pt-40 mx-auto px-4 sm:px-12 text-white'>
+        <div className='flex justify-center'>
+            <div className="font-bold md:text-6xl text-2xl text-center">The Best Place To Learn Code!</div>
         </div>
-        <Featured/>
-        
     </div>
     </>
 }
-
-
-const taglines = [
-    "Elevate Your Expertise: Transformative Courses for Every Journey.",
-    "Knowledge Unleashed: Explore, Learn, Succeed.",
-    "Ignite Your Learning Adventure: Courses that Inspire, Skills that Propel.",
-    "Master Your Potential: Where Education Meets Excellence.",
-    "Unlock Your Brilliance: Dive into a Sea of Possibilities.",
-    "Educate, Elevate, Excel: Your Path to Success Starts Here.",
-    "Infinite Wisdom, Infinite Growth: Your Gateway to Skill Mastery.",
-    "Chart Your Course: Unleash Your Potential, Enrich Your Mind.",
-    "Learning Beyond Limits: Explore, Discover, Conquer.",
-    "Fuel Your Passion, Shape Your Future: Courses Tailored for Success."
-  ];
-
 
 function Featured(){
 return<>
