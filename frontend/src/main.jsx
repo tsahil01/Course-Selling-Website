@@ -11,7 +11,7 @@ import Course from './component/Course';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='bg-zinc-950 min-h-screen'>
+  <div className='bg-zinc-900 min-h-screen'>
   <BrowserRouter>
   <Navbar />
     <Routes>
