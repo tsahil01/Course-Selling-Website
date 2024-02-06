@@ -1,10 +1,13 @@
 import EachCourse from './EachCourse';
 
 export default function Home(){
+    
     return<>
-    <div className='md:max-w-screen-2xl pt-40 mx-auto px-4 sm:px-12 text-white'>
+    <div className='md:max-w-screen-2xl md:pt-36 pt-10 mx-auto px-4 sm:px-12 text-white'>
         <div className='flex justify-center'>
-            <div className="font-bold md:text-6xl text-2xl text-center">The Best Place To Learn Code!</div>
+            <h1 className="font-bold md:text-5xl text-3xl text-center ">
+                The Best Place To Learn Code!
+            </h1>
         </div>
     </div>
     </>
