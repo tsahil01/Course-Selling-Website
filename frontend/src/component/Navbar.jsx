@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom"
+import { useRecoilValue } from "recoil";
+import { isLogin } from "../store/atoms/isLoginAtom";
 
 export default function Navbar(){
     const navigate = useNavigate()
-    const userLogin = false;
+    const userLogin = useRecoilValue(isLogin);
     return<>
         <nav className="py-2 h-16 text-white fixed z-50 top-0 px-4 w-full shadow-2xl bg-zinc-900 border-b border-slate-700 ">
             <div className="flex justify-between md:mx-auto md:max-w-screen-2xl mx-auto items-center">

@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { BACKENDURL } from "../../shared/urls";
+import { useSetRecoilState } from "recoil";
+import { isLogin } from "../store/atoms/isLoginAtom";
 
 export default function SignUpPage(){
     const navigate = useNavigate();
@@ -7,31 +10,33 @@ export default function SignUpPage(){
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")
     const [password, setPassword] = useState("")
+    const login = useSetRecoilState(isLogin)
 
-    // const RegisterUser = async () => {
-    //     const fetchData = await fetch(`${baseBackendUrl}/user/signup`, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json', // Added content type header
-    //       },
-    //       body: JSON.stringify({
-    //         username,
-    //         firstname,
-    //         lastname,
-    //         password,
-    //       }),
-    //     });
+    const RegisterUser = async () => {
+        const fetchData = await fetch(`${BACKENDURL}/user/createUser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstname,
+                lastname,
+                email:username,
+                password,
+                role: "learner"
+            })
+        })
 
-    //     const data = await fetchData.json();
-    //     if(data.token){
-
-    //         localStorage.setItem('token', data.token)
-    //         navigate('/dashboard')
-    //     } else{
-    //         alert(data.msg)
-    //     }
-    //     console.log(data);
-    //   };
+        const response = await fetchData.json();
+        if(response.token){
+            localStorage.setItem('token', response.token);
+            login(true)
+            navigate('/')
+        } else{
+            alert(response.msg)
+        }
+        console.log(response);
+    };
 
 
     return<>
@@ -66,6 +71,7 @@ export default function SignUpPage(){
             </div>
             <div className="mt-7 mb-3">
                 <button className="w-full rounded-lg bg-white text-black p-2 mt-2 outline-none border-slate-300 font-bold text-2xl" 
+                onClick={RegisterUser}
                 >Sign Up</button>
             </div>
             <div className="flex justify-center">
