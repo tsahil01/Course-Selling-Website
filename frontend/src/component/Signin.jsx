@@ -1,33 +1,37 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { BACKENDURL } from "../../shared/urls";
+import { useSetRecoilState } from "recoil";
+import { isLogin } from "../store/atoms/isLoginAtom";
 
 export default function SignInPage(){
 
     const navigate = useNavigate();
+    const login = useSetRecoilState(isLogin)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    // const loginUser = async ()=>{
-    //     const response = await fetch(`${baseBackendUrl}/user/signin`,{
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             username,
-    //             password
-    //         }),
-    //         headers: {
-    //             'Content-type': 'application/json',
-    //         }
-    //     })
-    //     const data = await response.json()
-    //     console.log(data)
-
-    //     if(data.token){
-    //         localStorage.setItem('token', data.token)
-    //         navigate('/dashboard')
-    //     } else{
-    //         alert(data.msg)
-    //     }
-    // }
+    const signInUser = async () =>{
+        const res = await fetch(`${BACKENDURL}/user/getuser`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email:username,
+                password
+            })
+        });
+        
+        const data = await res.json();
+        if(data.token){
+            localStorage.setItem('token', res.token);
+            login(true);
+            navigate('/');
+        } else{
+            alert(data.msg)
+        }
+    }
 
     return<>
     <div className="h-screen flex items-center justify-center bg-slate-800 overflow-auto">
@@ -56,7 +60,7 @@ export default function SignInPage(){
 
             <div className="mt-7 mb-3">
                 <button className="w-full rounded-lg bg-white text-black p-2 mt-2 outline-none border-slate-300 font-bold text-2xl"
-                >Sign In</button>
+                onClick={signInUser}>Sign In</button>
             </div>
             <div className="flex justify-center">
                 <div className="content-center">Don't have an Account? <button className="underline" onClick={()=>navigate('/signup')}>Create account</button></div>
