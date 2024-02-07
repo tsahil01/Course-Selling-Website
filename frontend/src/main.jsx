@@ -7,8 +7,10 @@ import Navbar from './component/Navbar';
 import SignInPage from './component/Signin';
 import SignUpPage from './component/Signup';
 import Courses from './component/Courses';  
+import { RecoilRoot } from 'recoil';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  <RecoilRoot>
   <div className='bg-zinc-900 min-h-screen'>
   <BrowserRouter>
   <Navbar />
@@ -22,5 +24,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Routes>
   </BrowserRouter>
   </div>
+  </RecoilRoot>
 );
 

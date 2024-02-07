@@ -12,7 +12,7 @@ const getUserSchema = zod.object({
 })
 
 // Get user => login
-userRoute.get('/getuser', async(req, res)=>{
+userRoute.post('/getuser', async(req, res)=>{
     const body = req.body;
     const zodSafeParse = getUserSchema.safeParse(body)
     if(!zodSafeParse.success){
@@ -34,7 +34,7 @@ userRoute.get('/getuser', async(req, res)=>{
                 token: token})           
         }
       } catch(e){
-        res.status(411).json(`Error: ${e}`);
+        res.status(411).json({msg: `Error: ${e}`});
       } finally{
         client.release();
         return;
@@ -73,7 +73,7 @@ userRoute.post('/createUser', async (req, res)=>{
          }
 
     } catch(e){
-        res.status(411).json(`Error: ${e}`);
+        res.status(411).json({msg:`Error: ${e}`});
     } finally{
         client.release();
         return;
