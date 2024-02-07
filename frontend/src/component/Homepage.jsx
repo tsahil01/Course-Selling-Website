@@ -1,5 +1,10 @@
+import { useState } from "react"
+
 export default function Home(){
-    
+    const [isLoading, setIsLoading] = useState(true)
+    setTimeout(() => {
+        setIsLoading(false);
+    }, 2000);
     return<>
     <div className='md:max-w-screen-2xl md:pt-36 pt-10 mx-auto px-4 sm:px-12 text-white'>
         <div className='flex flex-col items-center justify-center'>
@@ -10,7 +15,6 @@ export default function Home(){
             An Entry-Level Haven for Excelling in Coding Proficiency and Unlocking Your Inner Programmer Brilliance! Embark on Your Learning Journey Now and Evolve into a Tech Maestro of the Future!
             </div>
         </div>
-
         <div className="border border-zinc-800 rounded p-2 bg-zinc-800 md:max-w-6xl mx-auto mt-20">
             <img src="../public/headerPic.png" alt="" srcset="" />
         </div>
