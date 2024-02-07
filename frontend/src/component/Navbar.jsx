@@ -4,7 +4,7 @@ export default function Navbar(){
     const navigate = useNavigate()
     const userLogin = false;
     return<>
-        <nav className="py-2 h-16 text-white fixed z-50 top-0 px-4 w-full shadow-2xl bg-zinc-900 border-b border-slate-800">
+        <nav className="py-2 h-16 text-white fixed z-50 top-0 px-4 w-full shadow-2xl bg-zinc-900 border-b border-slate-800 ">
             <div className="flex justify-between md:mx-auto md:max-w-screen-2xl mx-auto items-center">
             <div className="flex justify-start gap-7">
                 <div className="text-xl p-3 font-black hidden md:block">Course Selling Website</div>

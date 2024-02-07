@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useState } from "react";
 import Loader from "./Loader";
+import { useNavigate } from "react-router-dom"
+
 
 export default function Home(){
     const [isLoading, setIsLoading] = useState(true)
@@ -25,6 +27,7 @@ export default function Home(){
      
 
 function WhiteEle(){
+    const navigate = useNavigate()
     return<>
     <div className="md:py-10 py-5">
         <div className="flex justify-between">
@@ -34,11 +37,13 @@ function WhiteEle(){
                 Embark on a journey of knowledge and discovery with our captivating array of courses that transcend the ordinary. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delve into the realms of creativity, innovation, and expertise as you immerse yourself in a learning experience like no other.
                 </div>
                 <div className="py-8 text-white font-bold">
-                <button className="text-base px-3 py-2 hover:bg-blue-700  bg-blue-900 rounded-md focus:outline-none">Explore Courses Now {">"}</button>
+                <button className="text-base px-3 py-2 hover:bg-blue-700  bg-blue-900 rounded-md focus:outline-none" onClick={()=>{
+                    navigate('/Courses')
+                }}>Explore Courses Now {">"}</button>
                 </div>
             </div>
             <div className="hidden md:block rounded-l-lg py-4 pl-4 bg-zinc-800 md:max-w-6xl md:my-20 my-10">
-                <img className="rounded-l-lg" src="https://app.100xdevs.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdashboard.9205c79e.png&w=1920&q=75" alt="" srcset=""/>
+                <img className="rounded-l-lg" src="../public/abc.png" alt="" srcset=""/>
             </div>
         </div>
     </div> 
