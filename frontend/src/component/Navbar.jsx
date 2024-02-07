@@ -9,9 +9,9 @@ export default function Navbar(){
             <div className="flex justify-start gap-7">
                 <div className="text-xl p-3 font-black hidden md:block">Course Selling Website</div>
                 <div className="flex justify-between">
-                <button className="text-base px-2 hover:bg-slate-700 rounded-md focus:outline-none" onClick={()=>navigate('/')}>
+                <button className="text-base px-3 py-2 hover:bg-slate-700 rounded-md focus:outline-none" onClick={()=>navigate('/')}>
                     Home</button>
-                <button className="text-base px-2 hover:bg-slate-700 rounded-md focus:outline-none" onClick={()=>navigate('/courses')}>
+                <button className="text-base px-3 py-2 hover:bg-slate-700 rounded-md focus:outline-none" onClick={()=>navigate('/courses')}>
                     Courses</button>
                 </div>
             </div>
