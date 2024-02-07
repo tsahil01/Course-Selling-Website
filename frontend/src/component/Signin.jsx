@@ -25,14 +25,14 @@ export default function SignInPage(){
         
         const data = await res.json();
         if(data.token){
-            localStorage.setItem('token', res.token);
+            console.log(data.token)
+            localStorage.setItem('token', data.token);
             login(true);
             navigate('/');
         } else{
             alert(data.msg)
         }
     }
-
     return<>
     <div className="h-screen flex items-center justify-center bg-slate-800 overflow-auto">
         <div className="border- m-5 p-5 md:px-9 bg-slate-900 rounded-lg border-slate-900 lg:w-1/3 text-white">

@@ -1,10 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { isLogin } from "../store/atoms/isLoginAtom";
 
 export default function Navbar(){
     const navigate = useNavigate()
-    const userLogin = useRecoilValue(isLogin);
+    const [userLogin, setUserLogin] = useRecoilState(isLogin);
+    if(localStorage.getItem('token')){
+        setUserLogin(true)
+    }
     return<>
         <nav className="py-2 h-16 text-white fixed z-50 top-0 px-4 w-full shadow-2xl bg-zinc-900 border-b border-slate-700 ">
             <div className="flex justify-between md:mx-auto md:max-w-screen-2xl mx-auto items-center">
@@ -35,7 +38,8 @@ function IsLogin(){
             </svg>
         </button>
         <div className="flex justify-between">
-            <button className="text-base px-2 hover:bg-slate-700 bg-slate-800 rounded-md focus:outline-none">Logout</button>
+            <button className="text-base px-2 hover:bg-slate-700 bg-slate-800 rounded-md focus:outline-none" 
+            onClick={()=>localStorage.clear()}>Logout</button>
         </div>
     </>
 }
