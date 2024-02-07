@@ -16,7 +16,7 @@ export default function Home(){
             </div>
         </div>
         <div className="border border-zinc-800 rounded-lg p-2 bg-zinc-800 md:max-w-6xl mx-auto md:my-20 my-10">
-            <img className="rounded-lg" src="../src/images/headerPic.png" alt="" srcset=""/>
+            <img className="rounded-lg" src="/images/headerPic.png" alt="" srcset=""/>
         </div>
     </div>
     <div className="  bg-slate-950 pt-7">
@@ -43,7 +43,7 @@ function WhiteEle(){
                 </div>
             </div>
             <div className="hidden md:block rounded-l-lg py-4 pl-4 bg-zinc-800 md:max-w-6xl md:my-20 my-10">
-                <img className="rounded-l-lg" src="../src/images/abc.png" alt="" srcset=""/>
+                <img className="rounded-l-lg" src="/images/abc.png" alt="" srcset=""/>
             </div>
         </div>
     </div> 
