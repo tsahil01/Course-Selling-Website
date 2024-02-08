@@ -15,7 +15,7 @@ export default function Home(){
             </div>
         </div>
         <div className="border border-zinc-800 rounded-lg p-2 bg-zinc-800 md:max-w-6xl mx-auto md:my-20 my-10">
-            <img className="rounded-lg" src="/images/headerPic.png" alt="" srcset=""/>
+            <img className="rounded-lg" src="/images/headerPic3.png" alt="" srcset=""/>
         </div>
     </div>
     <div className="  bg-slate-950 pt-7">

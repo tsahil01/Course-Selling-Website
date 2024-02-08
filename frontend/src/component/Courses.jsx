@@ -37,7 +37,7 @@ export default function Courses(){
 
 function EachCourse({title, description, price}){
     return <>
-    <div className="border border-zinc-700 rounded-xl p-4 w-full flex flex-col bg-zinc-800">
+    <div className="border border-zinc-700 rounded-xl p-4 w-full flex flex-col bg-zinc-900">
     <div className="text-2xl font-bold text-center mb-5">{title}</div>
     <div className="text-center">{description}</div>
     <div className="pt-8 text-center text-white font-bold">
