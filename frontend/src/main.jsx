@@ -11,7 +11,7 @@ import { RecoilRoot } from 'recoil';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RecoilRoot>
-  <div className='bg-zinc-900 min-h-screen'>
+  <div className='bg-zinc-950 min-h-screen'>
   <BrowserRouter>
   <Navbar />
     <Routes>

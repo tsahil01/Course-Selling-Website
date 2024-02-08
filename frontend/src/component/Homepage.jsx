@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom"
 
 
 export default function Home(){
-    const [isLoading, setIsLoading] = useState(true)
     return<>
     <div className='md:max-w-screen-2xl md:pt-36 pt-20 sm:pb-20 md:pb-10 mx-auto px-4 sm:px-12 text-white'>
         <div className='flex flex-col items-center justify-center'>

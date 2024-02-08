@@ -39,7 +39,8 @@ function IsLogin(){
         </button>
         <div className="flex justify-between">
             <button className="text-base px-2 hover:bg-slate-700 bg-slate-800 rounded-md focus:outline-none" 
-            onClick={()=>localStorage.clear()}>Logout</button>
+            onClick={()=>{localStorage.clear()
+            navigate('/')}}>Logout</button>
         </div>
     </>
 }
