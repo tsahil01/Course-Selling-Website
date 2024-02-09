@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { BACKENDURL } from "../../shared/urls";
 import { useSetRecoilState } from "recoil";
 import { isLogin } from "../store/atoms/isLoginAtom";
+import Loader from "./Loader";
 
 export default function SignUpPage(){
     const navigate = useNavigate();
@@ -11,8 +12,10 @@ export default function SignUpPage(){
     const [lastname, setLastname] = useState("")
     const [password, setPassword] = useState("")
     const login = useSetRecoilState(isLogin)
+    const [loading, setLoading] = useState(false)
 
     const RegisterUser = async () => {
+        setLoading(true);
         const fetchData = await fetch(`${BACKENDURL}/user/createUser`, {
             method: 'POST',
             headers: {
@@ -33,6 +36,7 @@ export default function SignUpPage(){
             login(true)
             navigate('/')
         } else{
+            setLoading(false);
             alert(response.msg)
         }
         console.log(response);
@@ -41,7 +45,9 @@ export default function SignUpPage(){
 
     return<>
     <div className="h-screen flex items-center justify-center bg-slate-800 overflow-auto">
-        <div className="border- m-5 p-5 md:px-9 bg-slate-900 rounded-lg border-slate-900 lg:w-1/3 text-white">
+        { loading ? <Loader/> : (
+
+            <div className="border- m-5 p-5 md:px-9 bg-slate-900 rounded-lg border-slate-900 lg:w-1/3 text-white">
             <div className="flex justify-center pb-5">
                 <div className="font-bold text-4xl">Sign Up</div>
             </div>
@@ -78,6 +84,7 @@ export default function SignUpPage(){
                 <div className="content-center">Already have account? <button className="underline" onClick={()=>navigate('/signin')}>Link</button></div>
             </div>
         </div>
+    )}
     </div>
     </>
 }
