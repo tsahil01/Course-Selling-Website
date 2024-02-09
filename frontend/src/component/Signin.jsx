@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { BACKENDURL } from "../../shared/urls";
 import { useSetRecoilState } from "recoil";
 import { isLogin } from "../store/atoms/isLoginAtom";
+import Loader from "./Loader";
 
 export default function SignInPage(){
 
@@ -10,8 +11,10 @@ export default function SignInPage(){
     const login = useSetRecoilState(isLogin)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const signInUser = async () =>{
+        setLoading(true)
         const res = await fetch(`${BACKENDURL}/user/getuser`, {
             method: 'POST',
             headers: {
@@ -31,11 +34,13 @@ export default function SignInPage(){
             navigate('/');
         } else{
             alert(data.msg)
+            setLoading(false)
         }
     }
     return<>
-    <div className="h-screen flex items-center justify-center bg-slate-800 overflow-auto">
-        <div className="border- m-5 p-5 md:px-9 bg-slate-900 rounded-lg border-slate-900 lg:w-1/3 text-white">
+    <div className="flex items-center justify-center bg-slate-800 overflow-auto min-h-screen">
+        {loading ? <Loader/> : (
+            <div className="border- m-5 p-5 md:px-9 bg-slate-900 rounded-lg border-slate-900 lg:w-1/3 text-white">
             <div className="flex justify-center pb-5">
                 <div className="font-bold text-4xl">Sign In</div>
             </div>
@@ -65,8 +70,8 @@ export default function SignInPage(){
             <div className="flex justify-center">
                 <div className="content-center">Don't have an Account? <button className="underline" onClick={()=>navigate('/signup')}>Create account</button></div>
             </div>
-
         </div>
+    )}
     </div>
     </>
 }
