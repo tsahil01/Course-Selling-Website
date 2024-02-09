@@ -31,8 +31,8 @@ function WhiteEle(){
     <div className="md:py-10 py-5">
         <div className="flex justify-between">
             <div className="w-full flex flex-col md:items-start items-center justify-center px-4 md:px-12">
-                <h1 className="font-bold text-white text-center md:text-3xl text-3xl pb-6">Courses Offerings</h1>
-                <div className='text-sm md:text-lg md:py-2 text-zinc-300 text-left mt-2  bg-zinc-800 p-3 rounded-md'>
+                <h1 className="font-bold text-white text-center md:text-5xl text-3xl pb-6">Courses Offerings</h1>
+                <div className='text-sm md:text-lg md:py-2 text-zinc-300 text-left mt-2  bg-slate-800 p-3 rounded-md'>
                 Embark on a journey of knowledge and discovery with our captivating array of courses that transcend the ordinary. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delve into the realms of creativity, innovation, and expertise as you immerse yourself in a learning experience like no other.
                 </div>
                 <div className="py-8 text-white font-bold">
