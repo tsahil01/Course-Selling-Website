@@ -4,11 +4,13 @@ import { BACKENDURL } from "../../shared/urls";
 import { useSetRecoilState } from "recoil";
 import { isLogin } from "../store/atoms/isLoginAtom";
 import Loader from "./Loader";
+import { userDetails } from "../store/atoms/userAtom";
 
 export default function SignInPage(){
 
     const navigate = useNavigate();
     const login = useSetRecoilState(isLogin)
+    const user = useSetRecoilState(userDetails)
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
@@ -28,8 +30,9 @@ export default function SignInPage(){
         
         const data = await res.json();
         if(data.token){
-            console.log(data.token)
+            user(data.user)
             localStorage.setItem('token', data.token);
+            localStorage.setItem('user', [data.user.firstname, data.user.lastname]);
             login(true);
             navigate('/');
         } else{

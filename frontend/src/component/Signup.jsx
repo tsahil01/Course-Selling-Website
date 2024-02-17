@@ -4,6 +4,7 @@ import { BACKENDURL } from "../../shared/urls";
 import { useSetRecoilState } from "recoil";
 import { isLogin } from "../store/atoms/isLoginAtom";
 import Loader from "./Loader";
+import { userDetails } from "../store/atoms/userAtom";
 
 export default function SignUpPage(){
     const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function SignUpPage(){
     const [lastname, setLastname] = useState("")
     const [password, setPassword] = useState("")
     const login = useSetRecoilState(isLogin)
+    const user = useSetRecoilState(userDetails)
     const [loading, setLoading] = useState(false)
 
     const RegisterUser = async () => {
@@ -33,7 +35,9 @@ export default function SignUpPage(){
         const response = await fetchData.json();
         if(response.token){
             localStorage.setItem('token', response.token);
-            login(true)
+            localStorage.setItem('user', response.user);
+            login(true);
+            user(response.user);
             navigate('/')
         } else{
             setLoading(false);
