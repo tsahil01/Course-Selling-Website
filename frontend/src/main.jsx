@@ -31,8 +31,8 @@ const App = () => (
           <Route path="/signup" element={<Suspense fallback={<LazyLoader />}><SignUpPage /></Suspense>} />
         </Routes>
       </BrowserRouter>
-      <Footer/>
     </div>
+      <Footer/>
   </RecoilRoot>
 );
 

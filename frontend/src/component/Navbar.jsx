@@ -10,7 +10,6 @@ export default function Navbar(){
     const [userInfo, setUserInfo] = useRecoilState(userDetails);
     if(localStorage.getItem('token')){
         setUserLogin(true)
-        console.log(localStorage.getItem('user'))
         setUserInfo(localStorage.getItem('user'))
     }
     
@@ -77,6 +76,9 @@ function IsLogin() {
             <button className="block px-4 py-2 hover:bg-gray-600 w-full hover:rounded-2xl text-left">
               <span className="text-bold">Hello, </span>
               <span>{user.firstname} {user.lastname}</span>
+            </button>
+            <button className="block px-4 py-2 hover:bg-gray-600 w-full hover:rounded-2xl text-left">
+              Your Courses
             </button>
             <button className="block px-4 py-2 hover:bg-gray-600 w-full hover:rounded-2xl text-left">
               Settings
