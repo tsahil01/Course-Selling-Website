@@ -32,7 +32,7 @@ export default function SignInPage(){
         if(data.token){
             user(data.user)
             localStorage.setItem('token', data.token);
-            localStorage.setItem('user', [data.user.firstname, data.user.lastname]);
+            localStorage.setItem('user', JSON.stringify(data.user));
             login(true);
             navigate('/');
         } else{

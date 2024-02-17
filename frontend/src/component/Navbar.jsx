@@ -39,8 +39,7 @@ export default function Navbar(){
 function IsLogin() {
   const setUserLogin = useSetRecoilState(isLogin);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const user = useRecoilValue(userDetails);
-  console.log(user)
+  const user = JSON.parse(useRecoilValue(userDetails));
 
   const toggleDropdown = () => {
     setIsDropdownOpen((prev) => !prev);
@@ -57,7 +56,7 @@ function IsLogin() {
       <div className="relative">
         <button
           className="text-2xl p-3 m-auto hover:bg-slate-700 rounded-full"
-          onClick={toggleDropdown}
+          onClick={toggleDropdown} 
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,16 +73,16 @@ function IsLogin() {
         </button>
 
         {isDropdownOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white rounded shadow-md">
-            <button className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left">
+          <div className="absolute right-0 mt- w-48 bg-zinc-700 text-white rounded-2xl shadow-md">
+            <button className="block px-4 py-2 hover:bg-gray-600 w-full hover:rounded-2xl text-left">
               <span className="text-bold">Hello, </span>
-              <span>{user.firstname}</span>
+              <span>{user.firstname} {user.lastname}</span>
             </button>
-            <button className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left">
+            <button className="block px-4 py-2 hover:bg-gray-600 w-full hover:rounded-2xl text-left">
               Settings
             </button>
             <button
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
+              className="block px-4 py-2 hover:bg-gray-600 w-full hover:rounded-2xl text-left"
               onClick={handleLogout}
             >
               Logout

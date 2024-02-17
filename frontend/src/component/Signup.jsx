@@ -35,7 +35,7 @@ export default function SignUpPage(){
         const response = await fetchData.json();
         if(response.token){
             localStorage.setItem('token', response.token);
-            localStorage.setItem('user', response.user);
+            localStorage.setItem('user', JSON.stringify(response.user));
             login(true);
             user(response.user);
             navigate('/')

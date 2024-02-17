@@ -11,6 +11,13 @@ const Courses = lazy(() => import('./component/Courses'));
 const SignInPage = lazy(() => import('./component/Signin'));
 const SignUpPage = lazy(() => import('./component/Signup'));
 
+function Footer() {
+  return (
+    <footer className="bg-zinc-950 text-white text-center py-4 z-50 bottom-0 w-full">
+      Made with <span role="img" aria-label="heart emoji">❤️</span> by  <a href="https://github.com/tsahil01" className="underline">Sahil Tiwakar</a>
+    </footer>
+  );
+}
 
 const App = () => (
   <RecoilRoot>
@@ -24,6 +31,7 @@ const App = () => (
           <Route path="/signup" element={<Suspense fallback={<LazyLoader />}><SignUpPage /></Suspense>} />
         </Routes>
       </BrowserRouter>
+      <Footer/>
     </div>
   </RecoilRoot>
 );
