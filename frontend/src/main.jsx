@@ -4,7 +4,7 @@ import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import { RecoilRoot, useRecoilCallback } from 'recoil';
-import Loader from './component/Loader';
+import LazyLoader from './component/LazyLoader';
 
 const Home = lazy(() => import('./component/Homepage'));
 const Courses = lazy(() => import('./component/Courses'));
@@ -18,10 +18,10 @@ const App = () => (
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
-          <Route path='/courses' element={<Suspense fallback={<Loader />}><Courses /></Suspense>} />
-          <Route path="/signin" element={<Suspense fallback={<Loader />}><SignInPage /></Suspense>} />
-          <Route path="/signup" element={<Suspense fallback={<Loader />}><SignUpPage /></Suspense>} />
+          <Route path="/" element={<Suspense fallback={<LazyLoader />}><Home /></Suspense>} />
+          <Route path='/courses' element={<Suspense fallback={<LazyLoader />}><Courses /></Suspense>} />
+          <Route path="/signin" element={<Suspense fallback={<LazyLoader />}><SignInPage /></Suspense>} />
+          <Route path="/signup" element={<Suspense fallback={<LazyLoader />}><SignUpPage /></Suspense>} />
         </Routes>
       </BrowserRouter>
     </div>
