@@ -2,21 +2,26 @@ import { useEffect, useState } from "react"
 import { BACKENDURL } from "../../shared/urls"
 import Loader from "./Loader"
 
+
+
 export default function Courses(){
     const [course, setCourse] = useState([])
     const [loading, setLoading] = useState(true)
-    useEffect(async ()=>{
-        const res = await fetch(`${BACKENDURL}/course/allcourse`);
-        const data = await res.json()
-        console.log(data.courses)
-        if(data.courses){
-            setCourse(data.courses);
-            setLoading(false)
-        } else {
-            alert(data)
+    useEffect(()=>{
+        const fetchData = async() => {
+            const res = await fetch(`${BACKENDURL}/course/allcourse`);
+            const data = await res.json()
+            // console.log(data.courses)
+            if(data.courses){
+                setCourse(data.courses);
+                setLoading(false)
+                return;
+            } else {
+                alert(data)
+                return;
+            }
         }
-
-        return ()=>{}
+        fetchData();
     }, [])
 
     return<>

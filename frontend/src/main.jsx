@@ -1,27 +1,31 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Home from './component/Homepage';
 import Navbar from './component/Navbar';
-import SignInPage from './component/Signin';
-import SignUpPage from './component/Signup';
-import Courses from './component/Courses';  
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot, useRecoilCallback } from 'recoil';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const Home = lazy(() => import('./component/Homepage'));
+const Courses = lazy(() => import('./component/Courses'));
+const SignInPage = lazy(() => import('./component/Signin'));
+const SignUpPage = lazy(() => import('./component/Signup'));
+
+const Loader = () => <div>Loading...</div>;
+
+const App = () => (
   <RecoilRoot>
-  <div className='bg-zinc-950 min-h-screen'>
-  <BrowserRouter>
-  <Navbar />
-    <Routes>
-      <Route path="/" element={<Home />}></Route>
-        <Route path='/courses' element={<Courses />}></Route>
-        <Route path="/signin" element={<SignInPage />}/>
-        <Route path="/signup" element={<SignUpPage />}/>
-    </Routes>
-  </BrowserRouter>
-  </div>
+    <div className='bg-zinc-950 min-h-screen'>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Suspense fallback={<Loader />}><Home /></Suspense>} />
+          <Route path='/courses' element={<Suspense fallback={<Loader />}><Courses /></Suspense>} />
+          <Route path="/signin" element={<Suspense fallback={<Loader />}><SignInPage /></Suspense>} />
+          <Route path="/signup" element={<Suspense fallback={<Loader />}><SignUpPage /></Suspense>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   </RecoilRoot>
 );
 
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
