@@ -59,13 +59,15 @@ userRoute.post('/createUser', async (req, res)=>{
     }
     const client = await pool.connect()
     try{
-        const response = await client.query(`INSERT INTO users ("firstname", "lastname", "email", "password", "role")
-         VALUES ('${body.firstname}', '${body.lastname}', '${body.email}', '${body.password}', '${body.role}');
-         `)
+        const response = await client.query(`
+        INSERT INTO users ("firstname", "lastname", "email", "password", "role")
+        VALUES ('${body.firstname}', '${body.lastname}', '${body.email}', '${body.password}', '${body.role}')
+        RETURNING "firstname", "lastname", "email", "role";
+    `);
          if(response.command == "INSERT"){
              const token = jwt.sign(body.email, process.env.JWT_SECRET)
-             console.log(token)
              res.json({
+                user: response.rows[0],
                 command: response.command,
                 token: token})
             } else{
