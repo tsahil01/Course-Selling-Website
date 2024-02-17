@@ -4,13 +4,13 @@ import './index.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './component/Navbar';
 import { RecoilRoot, useRecoilCallback } from 'recoil';
+import Loader from './component/Loader';
 
 const Home = lazy(() => import('./component/Homepage'));
 const Courses = lazy(() => import('./component/Courses'));
 const SignInPage = lazy(() => import('./component/Signin'));
 const SignUpPage = lazy(() => import('./component/Signup'));
 
-const Loader = () => <div className='text-white text-3xl'>Loading...</div>;
 
 const App = () => (
   <RecoilRoot>
